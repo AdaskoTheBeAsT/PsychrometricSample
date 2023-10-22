@@ -1,9 +1,10 @@
-import { InputPreference } from '../state/appSlice';
-import SettingSelect from './components/molecules/SettingSelect';
-import { HeightUnit, PressureUnit } from '@adaskothebeast/metric-units';
+import { InputPreference } from '../../../state/appSlice';
+import SettingSelect from '../molecules/SettingSelect';
+import { HeightUnit } from '@adaskothebeast/metric-units/src/HeightUnit';
+import { PressureUnit } from '@adaskothebeast/metric-units/src/PressureUnit';
 import Container from '@mui/material/Container/Container';
 import Grid from '@mui/material/Grid/Grid';
-import useAltitudePressureConversion from '../hooks/useAltitudePressureConversion';
+import useAltitudePressureConversion from '../../../hooks/useAltitudePressureConversion';
 
 const Settings: React.FC = () => {
   const {
@@ -52,7 +53,7 @@ const Settings: React.FC = () => {
             keyPart={'pressure-unit-input'}
             label={'Choose pressure unit'}
             value={pressureUnit}
-            values={[PressureUnit.Pascal, PressureUnit.Bar]}
+            values={[PressureUnit.Pascal, PressureUnit.inHg]}
             getEnumLabel={
               PressureUnit.getLabel as unknown as (
                 value: string | number

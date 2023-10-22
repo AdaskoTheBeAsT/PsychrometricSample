@@ -42,8 +42,6 @@ const SettingSelect = <T,>({
       >
         {values.map((value, index) => (
           <MenuItem key={`${keyPart}-${index}`} value={String(value)}>
-            {' '}
-            {/* Convert enum value to string */}
             {getEnumLabel(value)}
           </MenuItem>
         ))}

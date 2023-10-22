@@ -1,11 +1,12 @@
 import Container from '@mui/material/Container/Container';
 import Grid from '@mui/material/Grid/Grid';
-import useAltitudePressureConversion from '../hooks/useAltitudePressureConversion';
-import { InputPreference } from '../state/appSlice';
+import useAltitudePressureConversion from '../../../hooks/useAltitudePressureConversion';
+import { InputPreference } from '../../../state/appSlice';
 import FormControl from '@mui/material/FormControl/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment/InputAdornment';
-import { HeightUnit, PressureUnit } from '@adaskothebeast/metric-units';
+import { HeightUnit } from '@adaskothebeast/metric-units/src/HeightUnit';
+import { PressureUnit } from '@adaskothebeast/metric-units/src/PressureUnit';
 
 const Calculation: React.FC = () => {
   const {

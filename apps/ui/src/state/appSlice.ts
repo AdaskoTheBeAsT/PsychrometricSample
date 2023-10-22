@@ -1,4 +1,5 @@
-import { HeightUnit, PressureUnit } from '@adaskothebeast/metric-units';
+import { HeightUnit } from '@adaskothebeast/metric-units/src/HeightUnit';
+import { PressureUnit } from '@adaskothebeast/metric-units/src/PressureUnit';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export enum InputPreference {

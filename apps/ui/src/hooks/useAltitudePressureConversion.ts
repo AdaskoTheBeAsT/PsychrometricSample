@@ -8,18 +8,18 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../state/store';
+import { HeightUnit } from '@adaskothebeast/metric-units/src/HeightUnit';
+import { PressureUnit } from '@adaskothebeast/metric-units/src/PressureUnit';
 import {
-  HeightUnit,
-  PressureUnit,
   airPressureFromUnit,
   airPressureToUnit,
+} from '@adaskothebeast/metric-units/src/air-pressure';
+import {
   heightFromUnit,
   heightToUnit,
-} from '@adaskothebeast/metric-units';
-import {
-  airPressureToAltitude,
-  altitudeToAirPressure,
-} from '@adaskothebeast/psychrometrics';
+} from '@adaskothebeast/metric-units/src/height';
+import { airPressureToAltitude } from '@adaskothebeast/psychrometrics/src/air-pressure-to-altitude';
+import { altitudeToAirPressure } from '@adaskothebeast/psychrometrics/src/altitude-to-air-pressure';
 import { useState } from 'react';
 
 const useAltitudePressureConversion = () => {
