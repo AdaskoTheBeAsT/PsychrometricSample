@@ -1,2 +1,3 @@
-# PsychrometricSample
-sample controls for psychrometric
+# Psychrometrics Sample
+
+sample controls for psychrometrics
