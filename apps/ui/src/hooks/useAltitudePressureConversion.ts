@@ -1,16 +1,4 @@
 import {
-  updateAirPressure,
-  setInputPreference,
-  setAltitudeUnit,
-  setPressureUnit,
-  InputPreference,
-} from '../state/appSlice';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../state/store';
-import { HeightUnit } from '@adaskothebeast/metric-units/src/HeightUnit';
-import { PressureUnit } from '@adaskothebeast/metric-units/src/PressureUnit';
-import {
   airPressureFromUnit,
   airPressureToUnit,
 } from '@adaskothebeast/metric-units/src/air-pressure';
@@ -18,18 +6,30 @@ import {
   heightFromUnit,
   heightToUnit,
 } from '@adaskothebeast/metric-units/src/height';
+import { HeightUnit } from '@adaskothebeast/metric-units/src/HeightUnit';
+import { PressureUnit } from '@adaskothebeast/metric-units/src/PressureUnit';
 import { airPressureToAltitude } from '@adaskothebeast/psychrometrics/src/air-pressure-to-altitude';
 import { altitudeToAirPressure } from '@adaskothebeast/psychrometrics/src/altitude-to-air-pressure';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { PressureOrAltitudePref } from '../app/components/atoms/PressureOrAltitudePref';
+import { updateAirPressure } from '../state/appSlice';
+import {
+  setAltitudeUnit,
+  setPressureOrAltitudePref,
+  setPressureUnit,
+} from '../state/settingsSlice';
+import { RootState } from '../state/store';
 
 const useAltitudePressureConversion = () => {
   const dispatch = useDispatch();
+  const { value: airPressure } = useSelector((state: RootState) => state.app);
   const {
-    value: airPressure,
-    inputPreference,
+    pressureOrAltitudePref: inputPreference,
     altitudeUnit,
     pressureUnit,
-  } = useSelector((state: RootState) => state.app);
+  } = useSelector((state: RootState) => state.settings);
 
   const calculateAltitude = (airPressure: number, altitudeUnit: HeightUnit) => {
     return heightToUnit(altitudeUnit, airPressureToAltitude(airPressure));
@@ -57,8 +57,8 @@ const useAltitudePressureConversion = () => {
     dispatch(updateAirPressure(newBasePressure));
   };
 
-  const dispatchSetInputPreference = (preference: InputPreference) => {
-    dispatch(setInputPreference(preference));
+  const dispatchSetInputPreference = (preference: PressureOrAltitudePref) => {
+    dispatch(setPressureOrAltitudePref(preference));
   };
 
   const dispatchSetAltitudeUnit = (unit: HeightUnit) => {

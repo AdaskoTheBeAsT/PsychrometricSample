@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-import Settings from './components/pages/Settings';
-import NavBar from './components/molecules/NavBar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import NavBar from './components/molecules/NavBar';
 import Calculation from './components/pages/Calculation';
+import Settings from './components/pages/Settings';
 
 const StyledApp = styled.div`
   // Your style here
